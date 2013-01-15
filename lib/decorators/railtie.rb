@@ -7,5 +7,9 @@ module Decorators
       Decorators.load! Rails.application.config.cache_classes
     end
 
+    config.after_initialize do
+      Decorators.load! Rails.application.config.cache_classes
+    end
+
   end
 end

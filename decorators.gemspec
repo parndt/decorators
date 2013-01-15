@@ -1,3 +1,5 @@
+rails_version = ['>= 3.0.19'] | 0.upto(9).map{|i| "!= 3.1.#{i}"} | 0.upto(10).map{|i| "!= 3.2.#{i}"}
+
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{decorators}
@@ -18,5 +20,5 @@ Gem::Specification.new do |s|
     readme.md
   ]
 
-  s.add_dependency    'railties', '>= 3.2.11'
+  s.add_dependency    'railties', rails_version
 end

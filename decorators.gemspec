@@ -20,5 +20,6 @@ Gem::Specification.new do |s|
     readme.md
   ]
 
-  s.add_dependency    'railties', rails_version
+  s.add_dependency             'railties', rails_version
+  s.add_development_dependency 'rspec'
 end

@@ -13,7 +13,6 @@ module Decorators
       end
     end
 
-    attr_accessor :decorators
     def decorators
       paths.registered.map { |path|
         Dir[path.join('app', 'decorators', '**', '*_decorator.rb')]

@@ -7,7 +7,16 @@ initialisation process.
 
 Decorators must follow this naming convention:
 
-    app/decorators/<any number of directories>/something_decorator.rb
+    app/decorators/<at least one subdirectory>/something_decorator.rb
+
+This is an example of a decorator that will be loaded:
+
+    app/decorators/controllers/pages_controller_decorator.rb
+
+These are examples of decorators that *won't* be loaded:
+
+    app/decorators/pages_controller_decorator.rb
+    app/decorators/controllers/pages_controller.rb
 
 The important parts are being inside a sub directory of `app/decorators` and having
 `_decorator.rb` at the end of the file's name.

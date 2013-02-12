@@ -14,9 +14,7 @@ module Decorators
     end
 
     def decorators
-      paths.registered.map { |path|
-        Dir[path.join('app', 'decorators', '**', '*_decorator.rb')]
-      }.flatten.uniq
+      paths.registered.map { |path| find_decorators_in_path(path) }.flatten.uniq
     end
 
     def register!(*paths_to_register)
@@ -28,6 +26,18 @@ module Decorators
     protected
     def paths
       @paths ||= Paths.new
+    end
+
+    def apply_decorators_pattern_to_path(path)
+      path.join *pattern
+    end
+
+    def find_decorators_in_path(path)
+      Dir[apply_decorators_pattern_to_path(path)]
+    end
+
+    def pattern
+      ['app', 'decorators', '*', '**', '*_decorator.rb']
     end
   end
 

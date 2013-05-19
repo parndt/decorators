@@ -48,6 +48,25 @@ Or for many paths:
 require 'decorators'
 Decorators.register! Rails.root, Rails.root.join('vendor', 'extensions', 'extension_with_decorators')
 ```
+
+#### Avoiding Rails development mode reloading issues ([example](https://github.com/refinery/refinerycms/issues/2267))
+
+If you are loading this from within a Rails engine definition make sure you require
+the decorators library in the standard way, from outside of any method definitions:
+
+```diff
++require 'decorators'
++
+ module Namespaced
+   class Engine < Rails::Engine
+   
+   initializer 'load decorators' do
+-    require 'decorators'
+     Decorators.register! Rails.root, Rails.root.join('vendor', 'extensions', 'namespaced')
+   end
+ end
+```
+
 ## License
 
 Decorators is released under the [MIT license](https://github.com/parndt/decorators/blob/master/license.md#readme)

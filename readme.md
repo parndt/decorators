@@ -67,6 +67,18 @@ the decorators library in the standard way, from outside of any method definitio
  end
 ```
 
+If this is happening in the main application you can avoid this in `config/application.rb`:
+
+```diff
+ require File.expand_path('../boot', __FILE__)
+
+ require 'rails/all'
++require 'decorators'
+
+ if defined?(Bundler)
+   # etc
+```
+
 ## License
 
 Decorators is released under the [MIT license](https://github.com/parndt/decorators/blob/master/license.md#readme)

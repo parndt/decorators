@@ -1,4 +1,4 @@
-rails_version = ['>= 3.0.19'] | 0.upto(9).map{|i| "!= 3.1.#{i}"} | 0.upto(10).map{|i| "!= 3.2.#{i}"}
+rails_version = ['~> 4.0.0', '>= 3.0.19'] | 0.upto(9).map{|i| "!= 3.1.#{i}"} | 0.upto(10).map{|i| "!= 3.2.#{i}"}
 
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY

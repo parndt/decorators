@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2013 [Philip Arndt](http://philiparndt.name)
+Copyright (c) 2013 - 2015 [Philip Arndt](http://p.arndt.io)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

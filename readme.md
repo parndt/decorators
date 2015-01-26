@@ -26,7 +26,7 @@ The important parts are being inside a sub directory of `app/decorators` and hav
 In your Gemfile, add the gem:
 
 ```ruby
-gem 'decorators', '~> 1.0.0'
+gem 'decorators', '~> 1.0.4'
 ```
 
 Now, run `bundle install` and the gem should install.
@@ -59,7 +59,7 @@ the decorators library in the standard way, from outside of any method definitio
 +
  module Namespaced
    class Engine < Rails::Engine
-   
+
    initializer 'load decorators' do
 -    require 'decorators'
      Decorators.register! Rails.root, Rails.root.join('vendor', 'extensions', 'namespaced')
@@ -82,4 +82,4 @@ If this is happening in the main application you can avoid this in `config/appli
 ## License
 
 Decorators is released under the [MIT license](https://github.com/parndt/decorators/blob/master/license.md#readme)
-and is copyright (c) 2013 [Philip Arndt](http://philiparndt.name)
+and is copyright (c) 2013 [Philip Arndt](http://p.arndt.io)

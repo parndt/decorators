@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{decorators}
-  s.version           = %q{1.0.3}
+  s.version           = %q{1.0.4}
   s.description       = %q{Manages the process of loading decorators into your Rails application.}
   s.summary           = %q{Rails decorators plugin.}
   s.email             = %q{p@arndt.io}

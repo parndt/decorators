@@ -1,8 +1,13 @@
 language: ruby
 rvm:
+  - 2.2
+  - 2.1
   - 2.0.0
   - 1.9.3
   - rbx-19mode
   - jruby-19mode
 script:
   - bundle exec rspec spec/
+sudo: false
+cache:
+  - bundler

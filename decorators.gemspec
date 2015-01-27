@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{decorators}
-  s.version           = %q{1.0.4}
+  s.version           = %q{2.0.0}
   s.description       = %q{Manages the process of loading decorators into your Rails application.}
   s.summary           = %q{Rails decorators plugin.}
   s.email             = %q{p@arndt.io}
@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
     readme.md
   ]
 
-  s.add_dependency             'railties', '>= 3.0.19'
+  s.add_dependency             'railties', '>= 4.0.0', '< 5.0.0'
   s.add_development_dependency 'rspec'
 end

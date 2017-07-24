@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{decorators}
-  s.version           = %q{2.0.2}
+  s.version           = %q{2.0.3}
   s.description       = %q{Manages the process of loading decorators into your Rails application.}
   s.summary           = %q{Rails decorators plugin.}
   s.email             = %q{gems@p.arndt.io}
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
     readme.md
   ]
 
-  s.add_dependency             "railties", ">= 4.0.0", "< 5.1"
+  s.add_dependency             "railties", ">= 4.0.0", "< 5.2"
   s.add_development_dependency "rspec", "~> 3.5", ">= 3.5.0"
 
   s.cert_chain  = ["certs/parndt.pem"]

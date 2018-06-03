@@ -26,7 +26,7 @@ The important parts are being inside a sub directory of `app/decorators` and hav
 In your Gemfile, add the gem:
 
 ```ruby
-gem 'decorators', '~> 2.0.1'
+gem 'decorators', '~> 2.0.3'
 ```
 
 Now, run `bundle install` and the gem should install.

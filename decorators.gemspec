@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
     readme.md
   ]
 
-  s.add_dependency             "railties", ">= 4.0.0", "< 5.2"
+  s.add_dependency             "railties", ">= 4.0.0", "< 6"
   s.add_development_dependency "rspec", "~> 3.5", ">= 3.5.0"
 
   s.cert_chain  = ["certs/parndt.pem"]

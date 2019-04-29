@@ -6,13 +6,21 @@ module Decorators
       decorators_with_argument_errors = []
       decorators.each do |decorator|
         begin
-          require_or_load(decorator, cache_classes)
+          if cache_classes
+            require decorator
+          else
+            load decorator
+          end
         rescue ArgumentError
           decorators_with_argument_errors << decorator
         end
       end
       decorators_with_argument_errors.each do |decorator|
-        require_or_load(decorator, cache_classes)
+        if cache_classes
+          require decorator
+        else
+          load decorator
+        end
       end
     end
 
@@ -41,15 +49,6 @@ module Decorators
 
     def pattern
       ['app', 'decorators', '*', '**', '*_decorator.rb']
-    end
-  end
-
-  private
-  def require_or_load(decorator, cache_classes)
-    if cache_classes
-      require decorator
-    else
-      load decorator
     end
   end
 end

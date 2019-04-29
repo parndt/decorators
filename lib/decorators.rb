@@ -3,12 +3,16 @@ module Decorators
 
   class << self
     def load!(cache_classes)
+      decorators_with_argument_errors = []
       decorators.each do |decorator|
-        if cache_classes
-          require decorator
-        else
-          load decorator
+        begin
+          require_or_load(decorator, cache_classes)
+        rescue ArgumentError
+          decorators_with_argument_errors << decorator
         end
+      end
+      decorators_with_argument_errors.each do |decorator|
+        require_or_load(decorator, cache_classes)
       end
     end
 
@@ -40,6 +44,14 @@ module Decorators
     end
   end
 
+  private
+  def require_or_load(decorator, cache_classes)
+    if cache_classes
+      require decorator
+    else
+      load decorator
+    end
+  end
 end
 
 require 'decorators/railtie'

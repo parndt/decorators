@@ -3,7 +3,19 @@ module Decorators
 
   class << self
     def load!(cache_classes)
+      decorators_with_argument_errors = []
       decorators.each do |decorator|
+        begin
+          if cache_classes
+            require decorator
+          else
+            load decorator
+          end
+        rescue ArgumentError
+          decorators_with_argument_errors << decorator
+        end
+      end
+      decorators_with_argument_errors.each do |decorator|
         if cache_classes
           require decorator
         else
@@ -39,7 +51,6 @@ module Decorators
       ['app', 'decorators', '*', '**', '*_decorator.rb']
     end
   end
-
 end
 
 require 'decorators/railtie'

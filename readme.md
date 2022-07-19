@@ -1,4 +1,4 @@
-# Decorators Plugin [![Build Status](https://secure.travis-ci.org/parndt/decorators.png?branch=master)](http://travis-ci.org/parndt/decorators)
+# Decorators Plugin [![Build Status](https://secure.travis-ci.org/parndt/decorators.png?branch=main)](http://travis-ci.org/parndt/decorators)
 
 This is a very simple plugin that adds support for decorators to your Rails application.
 Effectively all that this does is allow you to register paths in which to search
@@ -26,7 +26,7 @@ The important parts are being inside a sub directory of `app/decorators` and hav
 In your Gemfile, add the gem:
 
 ```ruby
-gem 'decorators', '~> 2.0.3'
+gem 'decorators', '~> 2.0.6'
 ```
 
 Now, run `bundle install` and the gem should install.

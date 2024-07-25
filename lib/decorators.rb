@@ -1,5 +1,5 @@
 module Decorators
-  require 'decorators/paths'
+  require "decorators/paths"
 
   class << self
     def load!(cache_classes)
@@ -35,12 +35,13 @@ module Decorators
     end
 
     protected
+
     def paths
       @paths ||= Paths.new
     end
 
     def apply_decorators_pattern_to_path(path)
-      path.join *pattern
+      path.join(*pattern)
     end
 
     def find_decorators_in_path(path)
@@ -48,9 +49,9 @@ module Decorators
     end
 
     def pattern
-      ['app', 'decorators', '*', '**', '*_decorator.rb']
+      ["app", "decorators", "*", "**", "*_decorator.rb"]
     end
   end
 end
 
-require 'decorators/railtie'
+require "decorators/railtie"

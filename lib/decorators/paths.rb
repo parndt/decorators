@@ -3,8 +3,9 @@ require "pathname"
 module Decorators
   class Paths
     attr_reader :registered
-    def initialize(*)
-      @registered = Array.new(*)
+
+    def initialize(*args)
+      @registered = Array.new(*args)
     end
 
     def register!(path)

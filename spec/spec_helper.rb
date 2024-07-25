@@ -2,7 +2,7 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
 
-  config.order = 'random'
+  config.order = "random"
 end
 
 def decorator_path(name)
@@ -13,10 +13,9 @@ end
 unless Kernel.respond_to?(:require_relative)
   module Kernel
     def require_relative(path)
-      require File.join(File.dirname(caller[0]), path.to_str)
+      require File.join(File.dirname(caller(1..1).first), path.to_str)
     end
   end
 end
 
-require_relative '../lib/decorators'
-
+require_relative "../lib/decorators"

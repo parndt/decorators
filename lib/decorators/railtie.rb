@@ -1,8 +1,7 @@
-require 'rails'
+require "rails"
 
 module Decorators
   class Railtie < Rails::Railtie
-
     config.before_initialize do |app|
       loader = proc { Decorators.load!(app.config.cache_classes) }
 
@@ -12,6 +11,5 @@ module Decorators
         app.config.to_prepare(&loader)
       end
     end
-
   end
 end

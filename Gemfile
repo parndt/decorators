@@ -1,4 +1,7 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 gemspec
-gem 'rubocop', group: 'development', require: false
+
+group :development do
+  gem "standard", require: false
+end

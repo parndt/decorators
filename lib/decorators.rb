@@ -1,6 +1,9 @@
-module Decorators
-  require "decorators/paths"
+# frozen_string_literal: true
 
+require "decorators/paths"
+require "decorators/railtie"
+
+module Decorators
   class << self
     def load!(cache_classes)
       decorators_with_argument_errors = []
@@ -22,7 +25,18 @@ module Decorators
     def register!(*paths_to_register)
       paths_to_register.flatten.map do |path|
         paths.register! path
+        ignore_decorators_path(path)
       end
+    end
+
+    # Tell Zeitwerk to ignore decorator paths (they're loaded manually)
+    def ignore_decorators_path(path)
+      return unless defined?(Rails.autoloaders) && Rails.autoloaders.main
+
+      decorators_path = path.join("app", "decorators")
+      Rails.autoloaders.main.ignore(decorators_path) if decorators_path.exist?
+    rescue StandardError
+      # Silently ignore if autoloaders aren't ready yet
     end
 
     private
@@ -52,5 +66,3 @@ module Decorators
     end
   end
 end
-
-require "decorators/railtie"

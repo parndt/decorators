@@ -26,7 +26,7 @@ The important parts are being inside a sub directory of `app/decorators` and hav
 In your Gemfile, add the gem:
 
 ```ruby
-gem 'decorators', '~> 2.0.6'
+gem 'decorators', '~> 2.1'
 ```
 
 Now, run `bundle install` and the gem should install.
@@ -48,6 +48,13 @@ Or for many paths:
 require 'decorators'
 Decorators.register! Rails.root, Rails.root.join('vendor', 'extensions', 'extension_with_decorators')
 ```
+
+#### Zeitwerk
+
+Decorators loads these files itself, so it tells Zeitwerk to ignore the
+subdirectories of `app/decorators` in every path you register. Register your
+paths before eager loading happens, e.g. from an initializer or a `to_prepare`
+block, not `after_initialize`.
 
 #### Avoiding Rails development mode reloading issues ([example](https://github.com/refinery/refinerycms/issues/2267))
 

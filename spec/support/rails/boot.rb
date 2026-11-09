@@ -3,6 +3,7 @@
 # gets a fresh Rails.
 require "logger"
 require "rails"
+require "action_controller/railtie"
 require "decorators"
 
 module Fixture

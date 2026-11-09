@@ -20,9 +20,4 @@ Gem::Specification.new do |s|
 
   s.add_dependency "railties", ">= 4.0.0", "< 9"
   s.add_development_dependency "rspec", ">= 3.5.0"
-
-  s.cert_chain = ["certs/parndt.pem"]
-  if $0.end_with?("gem") && ARGV.include?("build") && ARGV.include?(__FILE__)
-    s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem")
-  end
 end

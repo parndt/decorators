@@ -25,18 +25,8 @@ module Decorators
     def register!(*paths_to_register)
       paths_to_register.flatten.map do |path|
         paths.register! path
-        ignore_decorators_path(path)
+        ignore_in_autoloader(path)
       end
-    end
-
-    # Tell Zeitwerk to ignore decorator paths (they're loaded manually)
-    def ignore_decorators_path(path)
-      return unless defined?(Rails.autoloaders) && Rails.autoloaders.main
-
-      decorators_path = path.join("app", "decorators")
-      Rails.autoloaders.main.ignore(decorators_path) if decorators_path.exist?
-    rescue StandardError
-      # Silently ignore if autoloaders aren't ready yet
     end
 
     private
@@ -58,6 +48,17 @@ module Decorators
         require decorator
       else
         load decorator
+      end
+    end
+
+    # Decorators are loaded by hand, so Zeitwerk mustn't also manage them. Only
+    # subdirectories of app/decorators hold decorators; files directly inside it
+    # stay autoloadable.
+    def ignore_in_autoloader(path)
+      return unless defined?(Rails.autoloaders) && Rails.application && Rails.autoloaders.zeitwerk_enabled?
+
+      Dir[Pathname(path).join("app", "decorators", "*")].select { |entry| File.directory?(entry) }.each do |directory|
+        Rails.autoloaders.main.ignore(directory)
       end
     end
 

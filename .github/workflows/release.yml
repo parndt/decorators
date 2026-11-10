@@ -9,6 +9,7 @@ jobs:
   push:
     if: github.repository == 'parndt/decorators'
     runs-on: ubuntu-latest
+    environment: release
 
     permissions:
       contents: write

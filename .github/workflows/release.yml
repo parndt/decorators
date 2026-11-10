@@ -1,0 +1,28 @@
+name: Release Gem to rubygems.org
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  push:
+    if: github.repository == 'parndt/decorators'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+
+      # Exchanges the Actions OIDC token for a short-lived RubyGems API key, so
+      # no secrets are stored.
+      - uses: rubygems/configure-rubygems-credentials@v2.0.0
+      - run: |
+          gem build decorators.gemspec --output decorators.gem
+          gem push decorators.gem
